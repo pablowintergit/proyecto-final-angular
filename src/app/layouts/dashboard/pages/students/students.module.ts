@@ -6,6 +6,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule} from '@angular/material/dialog';
 import { StudentsTableComponent } from '../components/students-table/students-table.component';
 import { StudentDialogComponent } from '../components/student-dialog/student-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { StudentDialogComponent } from '../components/student-dialog/student-dia
     CommonModule,
     StudentsRoutingModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatButtonModule
   ],
   exports:[StudentsTableComponent,StudentDialogComponent]
 })

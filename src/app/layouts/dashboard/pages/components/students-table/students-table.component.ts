@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IStudent } from '../../../../../model';
+import { MatDialog } from '@angular/material/dialog';
+import { StudentDialogComponent } from '../student-dialog/student-dialog.component';
 
 @Component({
   selector: 'app-students-table',
@@ -26,6 +28,13 @@ displayedColumns: string[] = [
 'adreess',
 'email'
 ];
+
+  constructor(private matDialog:MatDialog){}
+
+  openDialog():void{
+    this.matDialog.open(StudentDialogComponent);
+  }
+
 }
 
 
