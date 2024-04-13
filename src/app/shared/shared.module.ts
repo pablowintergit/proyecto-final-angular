@@ -30,7 +30,8 @@ import { MatListModule } from '@angular/material/list';
     MatSelectModule,
     ReactiveFormsModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatIconModule
     /* FormFieldValidationErrorsPipe,
     ResaltadoDirective,
     RepetirDirective, */

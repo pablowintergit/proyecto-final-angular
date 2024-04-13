@@ -44,15 +44,18 @@ displayedColumns: string[] = [
 'birthDate',
 'adreess',
 'email',
-'localidad'
+'localidad',
+'acciones'
 ];
 
   constructor(private matDialog:MatDialog){}
 
-  openDialog():void{
+  openDialog(student?:IStudent):void{
     this.matDialog
     .open(StudentDialogComponent, {
-      data: { localidades: this.localidades}
+      data: { localidades: this.localidades,
+              editingStudent:student
+      }
     })
     .afterClosed()
     .subscribe({
@@ -60,9 +63,13 @@ displayedColumns: string[] = [
         if (result){
           const localidad:Localidad | undefined=this.localidades.find(l=> l.codigo===result.localidad);
           result.localidad=localidad;
-          const ultimo:number=this.getUltimo();
-          result.id=ultimo;
-          this.students=[...this.students,result];
+          if (student){
+            this.students=this.students.map(s=> s.id===student.id?{...s,...result}:s);
+          }else{
+            const ultimo:number=this.getUltimo();
+            result.id=ultimo;
+            this.students=[...this.students,result];
+          }
         }
       }
     });
@@ -73,6 +80,13 @@ displayedColumns: string[] = [
      let id:number=Math.max(...ids) + 1;
      return id;
   }
+
+  onDeleteStudent(id: number): void {
+    if (confirm('Esta seguro?')) {
+      this.students = this.students.filter((u) => u.id != id);
+    }
+  }
+
 }
 
 
