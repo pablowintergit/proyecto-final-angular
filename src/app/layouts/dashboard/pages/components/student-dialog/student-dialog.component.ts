@@ -24,7 +24,7 @@ export class StudentDialogComponent {
           email:['',[Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'),
           Validators.required]],
           adreess:['',[Validators.required]],
-          localidad:['',[Validators.required,onlyLettersValidator]]
+          localidad:['',[Validators.required]]
         }
       );
       this.localidades=data.localidades;

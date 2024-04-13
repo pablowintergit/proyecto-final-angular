@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IStudent } from '../../../../../model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentDialogComponent } from '../student-dialog/student-dialog.component';
-import { Localidad } from '../../../../../model/localidades.model';
+import { Localidad, ILocalidad } from '../../../../../model/localidades.model';
 
 @Component({
   selector: 'app-students-table',
@@ -71,6 +71,8 @@ displayedColumns: string[] = [
     .subscribe({
       next: (result)=>{
         if (result){
+          const localidad:Localidad | undefined=this.localidades.find(l=> l.codigo===result.localidad);
+          result.localidad=localidad;
           this.students=[...this.students,result];
         }
       }
