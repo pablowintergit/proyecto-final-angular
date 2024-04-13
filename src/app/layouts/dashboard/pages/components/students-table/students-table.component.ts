@@ -33,9 +33,17 @@ displayedColumns: string[] = [
   constructor(private matDialog:MatDialog){}
 
   openDialog():void{
-    this.matDialog.open(StudentDialogComponent);
+    this.matDialog
+    .open(StudentDialogComponent)
+    .afterClosed()
+    .subscribe({
+      next: (result)=>{
+        if (result){
+          this.students=[...this.students,result];
+        }
+      }
+    });
   }
-
 }
 
 
