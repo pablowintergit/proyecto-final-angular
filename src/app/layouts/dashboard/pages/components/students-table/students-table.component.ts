@@ -49,36 +49,30 @@ displayedColumns: string[] = [
 
   constructor(private matDialog:MatDialog){}
 
- /*  openDialog():void{
+  openDialog():void{
     this.matDialog
-    .open(StudentDialogComponent)
-    .afterClosed()
-    .subscribe({
-      next: (result)=>{
-        if (result){
-          this.students=[...this.students,result];
-        }
-      }
-    });
-  } */
-
-  openDialog(): void {
-    const dialogRef = this.matDialog.open(StudentDialogComponent, {
+    .open(StudentDialogComponent, {
       data: { localidades: this.localidades}
-    });
-    dialogRef
+    })
     .afterClosed()
     .subscribe({
       next: (result)=>{
         if (result){
           const localidad:Localidad | undefined=this.localidades.find(l=> l.codigo===result.localidad);
           result.localidad=localidad;
+          const ultimo:number=this.getUltimo();
+          result.id=ultimo;
           this.students=[...this.students,result];
         }
       }
     });
-}
+  }
 
+  getUltimo():number{
+     let ids:number[]=this.students.map(s=>s.id);
+     let id:number=Math.max(...ids) + 1;
+     return id;
+  }
 }
 
 
