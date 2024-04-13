@@ -7,6 +7,7 @@ import {MatDrawerContainer, MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import { StudentsModule } from './pages/students/students.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {MatIconModule} from '@angular/material/icon';
     MatSidenavModule,
     MatToolbarModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    StudentsModule
   ],
   exports:[DashboardComponent]
 })
