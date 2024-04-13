@@ -5,10 +5,12 @@ import { StudentsRoutingModule } from './students-routing.module';
 import { MatTableModule } from '@angular/material/table';
 import { MatDialogModule} from '@angular/material/dialog';
 import { StudentsTableComponent } from '../components/students-table/students-table.component';
+import { StudentDialogComponent } from '../components/student-dialog/student-dialog.component';
 
 @NgModule({
   declarations: [
-    StudentsTableComponent
+    StudentsTableComponent,
+    StudentDialogComponent
   ],
   imports: [
     CommonModule,
@@ -16,6 +18,6 @@ import { StudentsTableComponent } from '../components/students-table/students-ta
     MatTableModule,
     MatDialogModule
   ],
-  exports:[StudentsTableComponent]
+  exports:[StudentsTableComponent,StudentDialogComponent]
 })
 export class StudentsModule { }
