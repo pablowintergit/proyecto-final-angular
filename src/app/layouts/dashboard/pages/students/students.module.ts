@@ -7,6 +7,9 @@ import { MatDialogModule} from '@angular/material/dialog';
 import { StudentsTableComponent } from '../components/students-table/students-table.component';
 import { StudentDialogComponent } from '../components/student-dialog/student-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { MatButtonModule } from '@angular/material/button';
     StudentsRoutingModule,
     MatTableModule,
     MatDialogModule,
-    MatButtonModule
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   exports:[StudentsTableComponent,StudentDialogComponent]
 })

@@ -5,5 +5,5 @@ export interface IStudent{
     birthDate:Date,
     email:string,
     adreess:string,
-    password:string
+    localidad:string
 }
