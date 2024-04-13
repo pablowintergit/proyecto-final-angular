@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { onlyLettersValidator } from '../../../../../validators/onlyLettersValidator.validator';
 import { dateValidator } from '../../../../../validators/dateValidator.validator';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Localidad } from '../../../../../model';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-student-dialog',
@@ -12,7 +14,9 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class StudentDialogComponent {
     studentForm:FormGroup;
     
-    constructor(private formBuilder:FormBuilder, private matDialogRef:MatDialogRef<StudentDialogComponent>){
+    localidades:Localidad[];
+
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any,private formBuilder:FormBuilder, private matDialogRef:MatDialogRef<StudentDialogComponent>){
       this.studentForm=this.formBuilder.group({
           name:['',[Validators.required,onlyLettersValidator]],
           lastName:['',[Validators.required,onlyLettersValidator]],
@@ -23,6 +27,7 @@ export class StudentDialogComponent {
           localidad:['',[Validators.required,onlyLettersValidator]]
         }
       );
+      this.localidades=data.localidades;
     }
 
     onSave():void{
