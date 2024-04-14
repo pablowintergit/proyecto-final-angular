@@ -6,7 +6,9 @@
         <mat-form-field class="w-100" appearance="fill">
           <mat-label>Nombre</mat-label>
           <input formControlName="name" matInput />
-          <mat-hint>El nombre debe tener al menos 6 caracteres</mat-hint>
+          <mat-error>{{
+            nameControl?.errors | formFieldValidationErrors
+          }}</mat-error>
         </mat-form-field>
       </div>
 
@@ -14,20 +16,22 @@
         <mat-form-field class="w-100" appearance="fill">
           <mat-label>Apellido</mat-label>
           <input formControlName="lastName" matInput />
+          <mat-error>{{
+            lastNameControl?.errors | formFieldValidationErrors
+          }}</mat-error>
         </mat-form-field>
       </div>
 
       <div class="col-md-6">
-        <!-- <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Fecha de Nacimiento</mat-label>
-          <input formControlName="birthDate" matInput />
-        </mat-form-field> -->
         <mat-form-field>
           <mat-label>Choose a date</mat-label>
           <input formControlName="birthDate" matInput [matDatepicker]="picker">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+          <mat-error>{{
+            birthDateControl?.errors | formFieldValidationErrors
+          }}</mat-error>
         </mat-form-field>
       </div>
 
@@ -35,6 +39,9 @@
         <mat-form-field class="w-100" appearance="fill">
           <mat-label>Email</mat-label>
           <input formControlName="email" matInput />
+          <mat-error>{{
+            emailControl?.errors | formFieldValidationErrors
+          }}</mat-error>
         </mat-form-field>
       </div>
 
@@ -42,6 +49,9 @@
         <mat-form-field class="w-100" appearance="fill">
           <mat-label>Direccion</mat-label>
           <input formControlName="adreess" matInput />
+          <mat-error>{{
+            adreessControl?.errors | formFieldValidationErrors
+          }}</mat-error>
         </mat-form-field>
       </div>
 
@@ -53,11 +63,15 @@
                 {{ loca.nombre }}
             </mat-option>
           </mat-select>
+          <mat-error>{{
+            localidadControl?.errors | formFieldValidationErrors
+          }}</mat-error>
         </mat-form-field>
       </div>
     </div>
   </form>
 </div>
+
 <div class="d-flex justify-content-end" mat-dialog-actions>
   <button mat-dialog-close mat-button>Cancelar</button>
   <button mat-button (click)="onSave()" >Guardar</button>

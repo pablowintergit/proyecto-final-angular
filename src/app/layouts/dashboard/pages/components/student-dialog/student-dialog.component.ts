@@ -18,12 +18,12 @@ export class StudentDialogComponent{
 
     constructor(@Inject(MAT_DIALOG_DATA) private data: any,private formBuilder:FormBuilder, private matDialogRef:MatDialogRef<StudentDialogComponent>){
       this.studentForm=this.formBuilder.group({
-          name:['',[Validators.required,onlyLettersValidator]],
-          lastName:['',[Validators.required,onlyLettersValidator]],
+          name:['',[Validators.required,Validators.minLength(3),onlyLettersValidator]],
+          lastName:['',[Validators.required,Validators.minLength(3),onlyLettersValidator]],
           birthDate:['',[Validators.required,dateValidator]],
           email:['',[Validators.pattern('[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}'),
           Validators.required]],
-          adreess:['',[Validators.required]],
+          adreess:['',[Validators.required,Validators.minLength(5)]],
           localidad:['',[Validators.required]]
         }
       );
@@ -47,8 +47,28 @@ export class StudentDialogComponent{
       }
     }
 
-    get localidadControl() {
-      return this.studentForm.get('firstName');
+    get nameControl() {
+      return this.studentForm.get('name');
     }
 
+    get lastNameControl() {
+      return this.studentForm.get('lastName');
+    }
+
+    get birthDateControl() {
+      return this.studentForm.get('birthDate');
+    }
+
+    get emailControl() {
+      return this.studentForm.get('email');
+    }
+
+    get adreessControl() {
+      return this.studentForm.get('adreess');
+    }
+
+    get localidadControl() {
+      return this.studentForm.get('localidad');
+    }
+    
 }
