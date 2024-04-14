@@ -2,12 +2,8 @@
   <mat-drawer #drawer  class="example-sidenav" 
   [opened]="!isMobile()"
   [mode]="isMobile()?'over':'side'">
-    <p>Auto-resizing sidenav</p>
-    @if (showFiller) {
-    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-    }
-    <button #boton (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
+   <button #boton (click)="showStudentsCRUD = !showStudentsCRUD" mat-raised-button>
+      Alumnos
     </button>
   </mat-drawer>
 
@@ -21,7 +17,7 @@
         <span>Gestion Alumnos</span>
     </mat-toolbar>
     <main class="main">
-      <app-students-table></app-students-table>
+      <app-students-table [visible]="showStudentsCRUD"></app-students-table>
     </main>
   </div>
 </mat-drawer-container>

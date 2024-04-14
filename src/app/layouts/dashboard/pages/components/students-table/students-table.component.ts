@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IStudent } from '../../../../../model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentDialogComponent } from '../student-dialog/student-dialog.component';
@@ -10,6 +10,9 @@ import { Localidad, ILocalidad } from '../../../../../model/localidades.model';
   styleUrl: './students-table.component.scss'
 })
 export class StudentsTableComponent {
+  @Input()
+  visible:boolean=false;
+
   public localidades:Localidad[]=[
     new Localidad("cordoba","Cordoba"),
     new Localidad("alta-gracia","Alta Gracia"),
