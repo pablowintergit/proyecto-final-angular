@@ -14,6 +14,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class StudentDialogComponent{
     studentForm:FormGroup;
     localidades:Localidad[];
+    title:string;
 
     constructor(@Inject(MAT_DIALOG_DATA) private data: any,private formBuilder:FormBuilder, private matDialogRef:MatDialogRef<StudentDialogComponent>){
       this.studentForm=this.formBuilder.group({
@@ -28,10 +29,13 @@ export class StudentDialogComponent{
       );
       this.localidades=data.localidades;
       if (data.editingStudent){
+        this.title="Editar Alumno";
         this.studentForm.patchValue(data.editingStudent);
         if (this.studentForm.get('localidad')!=null){
           this.studentForm.get('localidad')?.patchValue(data.editingStudent.localidad.codigo);
         }
+      }else{
+        this.title="Crear Alumno";
       }
     }
     

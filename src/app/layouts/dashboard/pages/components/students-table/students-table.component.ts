@@ -55,7 +55,8 @@ displayedColumns: string[] = [
     .open(StudentDialogComponent, {
       data: { localidades: this.localidades,
               editingStudent:student
-      }
+      },
+      width:'500px'
     })
     .afterClosed()
     .subscribe({
