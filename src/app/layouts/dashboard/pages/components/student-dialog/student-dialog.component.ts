@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, Inject, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { onlyLettersValidator } from '../../../../../validators/onlyLettersValidator.validator';
 import { dateValidator } from '../../../../../validators/dateValidator.validator';
 import { MatDialogRef } from '@angular/material/dialog';
@@ -11,10 +11,9 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './student-dialog.component.html',
   styleUrl: './student-dialog.component.scss'
 })
-export class StudentDialogComponent implements AfterViewInit {
+export class StudentDialogComponent{
     studentForm:FormGroup;
     localidades:Localidad[];
-    selectedOption:string;
 
     constructor(@Inject(MAT_DIALOG_DATA) private data: any,private formBuilder:FormBuilder, private matDialogRef:MatDialogRef<StudentDialogComponent>){
       this.studentForm=this.formBuilder.group({
@@ -30,18 +29,12 @@ export class StudentDialogComponent implements AfterViewInit {
       this.localidades=data.localidades;
       if (data.editingStudent){
         this.studentForm.patchValue(data.editingStudent);
-        this.selectedOption=data.editingStudent.localidad.codigo;
-      }else{
-        this.selectedOption="";
+        if (this.studentForm.get('localidad')!=null){
+          this.studentForm.get('localidad')?.patchValue(data.editingStudent.localidad.codigo);
+        }
       }
     }
     
-    ngAfterViewInit(): void {
-      console.log(this.selectedOption);
-      
-       this.localidadControl?.setValue(this.selectedOption);
-    }
-
     onSave():void{
       if (this.studentForm.invalid){
         this.studentForm.markAllAsTouched();
