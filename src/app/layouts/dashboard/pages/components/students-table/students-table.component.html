@@ -9,45 +9,39 @@
   
     <!-- Position Column -->
     <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">No.</th>
       <td mat-cell *matCellDef="let element">{{ element.id }}</td>
     </ng-container>
   
     <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef>Nombre</th>
-      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
-    </ng-container>
-  
-    <!-- Weight Column -->
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef>Apellido</th>
-      <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+    <ng-container matColumnDef="fullName">
+      <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Apellido y Nombre</th>
+      <td mat-cell *matCellDef="let element">{{ element | fullNamePipe }}</td>
     </ng-container>
   
     <ng-container matColumnDef="birthDate">
-      <th mat-header-cell *matHeaderCellDef>Fecha Nacimiento</th>
+      <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Fecha Nacimiento</th>
       <td mat-cell *matCellDef="let element">{{ element.birthDate | date:"dd-MM-yyyy" }}</td>
     </ng-container>
   
     
     <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef>Correo</th>
+      <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Correo</th>
       <td mat-cell *matCellDef="let element">{{ element.email }}</td>
     </ng-container>
   
     <ng-container matColumnDef="adreess">
-      <th mat-header-cell *matHeaderCellDef>Direccion</th>
+      <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Direccion</th>
       <td mat-cell *matCellDef="let element">{{ element.adreess }}</td>
     </ng-container>
     
     <ng-container matColumnDef="localidad">
-      <th mat-header-cell *matHeaderCellDef>Localidad</th>
+      <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Localidad</th>
       <td mat-cell *matCellDef="let element">{{ element.localidad.nombre }}</td>
     </ng-container>
 
     <ng-container matColumnDef="acciones">
-      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Acciones</th>
       <td mat-cell *matCellDef="let element">
         <button (click)="openDialog(element)" mat-icon-button color="primary">
           <mat-icon>edit</mat-icon>

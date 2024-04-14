@@ -8,9 +8,6 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatIconModule } from '@angular/material/icon';
-//import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
-//import { ResaltadoDirective } from './directives/resaltado.directive';
-//import { RepetirDirective } from './directives/repetir.directive';
 import { MatListModule } from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -21,10 +18,6 @@ import { FontSizeDirectiveDirective } from './directives/font-size-directive.dir
 
 @NgModule({
   declarations: [
-    /* FormFieldValidationErrorsPipe,
-    ResaltadoDirective,
-    RepetirDirective, */
-  
     FormFieldValidationErrorsPipe,
     FullNamePipePipe,
     FontSizeDirectiveDirective
@@ -43,11 +36,10 @@ import { FontSizeDirectiveDirective } from './directives/font-size-directive.dir
     MatSelectModule,
     MatIconModule,
     MatNativeDateModule,
-    MatDatepickerModule
-    
-    /* FormFieldValidationErrorsPipe,
-    ResaltadoDirective,
-    RepetirDirective, */
+    MatDatepickerModule,
+    FormFieldValidationErrorsPipe,
+    FullNamePipePipe,
+    FontSizeDirectiveDirective
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }

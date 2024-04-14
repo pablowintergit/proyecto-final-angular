@@ -5,8 +5,11 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class FullNamePipePipe implements PipeTransform {
 
-  transform(value: unknown, ...args: unknown[]): unknown {
-    return null;
-  }
+  transform(person:any, ...args: unknown[]):string {
+    if (!person || !person.name || !person.lastName) {
+      return '';
+    }
 
+    return `${person.lastName}, ${person.name} `;
+  }
 }

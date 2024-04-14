@@ -21,7 +21,7 @@ export class StudentsTableComponent {
   students:IStudent[]=[
     {id:1,name:"Juan",lastName:"Rodriguez",birthDate:new Date(1990,5,20),adreess:"Laprida 150",email:"juanrodriguez@gmail.com",
       localidad: new Localidad("cordoba","Cordoba")},
-    {id:2,name:"Juan",lastName:"Rodriguez",birthDate:new Date(1990,5,20),adreess:"Laprida 150",email:"juanrodriguez@gmail.com",
+    {id:2,name:"Ivan",lastName:"Zapata",birthDate:new Date(1990,5,20),adreess:"Laprida 150",email:"juanrodriguez@gmail.com",
     localidad:new Localidad("alta-gracia","Alta Gracia") },
     {id:3,name:"Pedro",lastName:"Garcia", birthDate:new Date(1994,2,15),adreess:"Asuncion 390",email:"garcia@hotmail.com",
     localidad:new Localidad("cordoba","Cordoba")},
@@ -39,8 +39,7 @@ export class StudentsTableComponent {
 
 displayedColumns: string[] = [
 'id',
-'name',
-'lastName',
+'fullName',
 'birthDate',
 'adreess',
 'email',
