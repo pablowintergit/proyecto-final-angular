@@ -8,6 +8,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import { StudentsModule } from './pages/students/students.module';
+import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { StudentsModule } from './pages/students/students.module';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    StudentsModule
+    StudentsModule,
+    PipesYDirectivasModule
   ],
   exports:[DashboardComponent]
 })

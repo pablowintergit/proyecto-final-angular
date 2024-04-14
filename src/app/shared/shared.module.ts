@@ -14,13 +14,20 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MAT_DATE_LOCALE } from '@angular/material/core'
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { FormFieldValidationErrorsPipe } from './pipes/form-field-validation-errors.pipe';
+import { FullNamePipePipe } from './pipes/full-name-pipe.pipe';
+import { FontSizeDirectiveDirective } from './directives/font-size-directive.directive'
 
 @NgModule({
   declarations: [
     /* FormFieldValidationErrorsPipe,
     ResaltadoDirective,
     RepetirDirective, */
+  
+    FormFieldValidationErrorsPipe,
+    FullNamePipePipe,
+    FontSizeDirectiveDirective
   ],
   imports: [CommonModule],
   exports: [
