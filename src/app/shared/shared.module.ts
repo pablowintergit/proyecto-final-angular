@@ -12,6 +12,8 @@ import { MatIconModule } from '@angular/material/icon';
 //import { ResaltadoDirective } from './directives/resaltado.directive';
 //import { RepetirDirective } from './directives/repetir.directive';
 import { MatListModule } from '@angular/material/list';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,10 @@ import { MatListModule } from '@angular/material/list';
     ReactiveFormsModule,
     MatIconModule,
     MatSelectModule,
-    MatIconModule
+    MatIconModule,
+    MatNativeDateModule,
+    MatDatepickerModule
+    
     /* FormFieldValidationErrorsPipe,
     ResaltadoDirective,
     RepetirDirective, */
