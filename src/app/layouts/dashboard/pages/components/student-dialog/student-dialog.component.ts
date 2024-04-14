@@ -37,6 +37,8 @@ export class StudentDialogComponent implements AfterViewInit {
     }
     
     ngAfterViewInit(): void {
+      console.log(this.selectedOption);
+      
        this.localidadControl?.setValue(this.selectedOption);
     }
 
