@@ -64,8 +64,8 @@ displayedColumns: string[] = [
     .subscribe({
       next: (result)=>{
         if (result){
-          const localidad:Localidad | undefined=this.localidades.find(l=> l.codigo===result.localidad);
-          result.localidad=localidad;
+          /* const localidad:Localidad | undefined=this.localidades.find(l=> l.codigo===result.localidad);
+          result.localidad=localidad; */
           if (student){
             this.students=this.students.map(s=> s.id===student.id?{...s,...result}:s);
           }else{

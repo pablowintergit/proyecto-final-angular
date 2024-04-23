@@ -31,14 +31,18 @@ export class StudentDialogComponent{
       if (data.editingStudent){
         this.title="Editar Alumno";
         this.studentForm.patchValue(data.editingStudent);
-        if (this.studentForm.get('localidad')!=null){
+       /*  if (this.studentForm.get('localidad')!=null){
           this.studentForm.get('localidad')?.patchValue(data.editingStudent.localidad.codigo);
-        }
+        } */
       }else{
         this.title="Crear Alumno";
       }
     }
     
+    compareLocalidad(l1:Localidad,l2:Localidad):boolean{
+      return l1 && l2 ? l1.codigo===l2.codigo : l1===l2;
+    }
+
     onSave():void{
       if (this.studentForm.invalid){
         this.studentForm.markAllAsTouched();
