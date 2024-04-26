@@ -2,9 +2,12 @@
   <mat-drawer #drawer  class="example-sidenav" 
   [opened]="!isMobile()"
   [mode]="isMobile()?'over':'side'">
-   <button #boton (click)="showStudentsCRUD = !showStudentsCRUD" mat-raised-button>
-      Alumnos
-    </button>
+    <mat-nav-list>
+      <a routerLink="home" mat-list-item>Inicio</a>
+      <a routerLink="students" mat-list-item>Estudiantes</a>
+      <a routerLink="courses" mat-list-item>Cursos</a>
+      <a routerLink="classes" mat-list-item>Clases</a>
+    </mat-nav-list>
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -17,7 +20,7 @@
         <span>Gestion Alumnos</span>
     </mat-toolbar>
     <main class="main">
-      <app-students-table [visible]="showStudentsCRUD"></app-students-table>
+      <router-outlet></router-outlet>
     </main>
   </div>
 </mat-drawer-container>

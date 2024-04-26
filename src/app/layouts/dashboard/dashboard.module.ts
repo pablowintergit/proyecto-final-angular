@@ -7,8 +7,9 @@ import {MatDrawerContainer, MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
-import { StudentsModule } from './pages/students/students.module';
+import { StudentsModule } from './pages/students/students-table/students-table.module';
 import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-directivas.module';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { PipesYDirectivasModule } from './pages/pipes-y-directivas/pipes-y-direc
     MatButtonModule,
     MatIconModule,
     StudentsModule,
-    PipesYDirectivasModule
+    PipesYDirectivasModule,
+    SharedModule
   ],
   exports:[DashboardComponent]
 })

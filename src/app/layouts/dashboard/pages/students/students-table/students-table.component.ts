@@ -10,9 +10,7 @@ import { Localidad, ILocalidad } from '../../../../../model/localidades.model';
   styleUrl: './students-table.component.scss'
 })
 export class StudentsTableComponent {
-  @Input()
-  visible:boolean=false;
-
+  
   public localidades:Localidad[]=[
     new Localidad("cordoba","Cordoba"),
     new Localidad("alta-gracia","Alta Gracia"),
