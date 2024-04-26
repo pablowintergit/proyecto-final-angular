@@ -1,1 +1,57 @@
-<p>classes works!</p>
+<div class="d-flex justify-content-end mb-3">
+    <button (click)="openDialog()" mat-flat-button color="primary" >
+        Agregar Clase
+    </button>
+</div>
+<table mat-table [dataSource]="classes" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">No.</th>
+    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="course">
+    <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Profesor</th>
+    <td mat-cell *matCellDef="let element">{{ element.course.name}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="shedule">
+    <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Descripcion</th>
+    <td mat-cell *matCellDef="let element">{{ element.shedule }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="teacher">
+    <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Profesor</th>
+    <td mat-cell *matCellDef="let element">{{ element.teacher | fullNamePipe }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="student">
+    <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Profesor</th>
+    <td mat-cell *matCellDef="let element">{{ element.student | fullNamePipe }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fecha">
+    <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Profesor</th>
+    <td mat-cell *matCellDef="let element">{{ element.fecha | date: 'dd/MM/yyyy' }}</td>
+  </ng-container>
+
+
+  <ng-container matColumnDef="acciones">
+    <th mat-header-cell *matHeaderCellDef appFontSizeDirective fontSize="20px">Acciones</th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="openDialog(element)" mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button (click)="onDeleteClass(element.id)" mat-icon-button color="warn">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>
