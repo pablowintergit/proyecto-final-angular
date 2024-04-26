@@ -7,6 +7,8 @@ import { Observable, of } from 'rxjs';
 })
 export class ClassesService {
   
+  constructor() { }
+
   private classes: IClass[] = [
       {
           id: 1,
@@ -36,21 +38,17 @@ export class ClassesService {
       return of(this.classes);
   }
 
-  deleteCourse(id:number):Observable<ICourse[]>{
+  deleteClass(id:number):Observable<IClass[]>{
     return of(this.classes.filter(c=> c.id!==id));
   }
 
-  updateCourse(id:number,clazz:IClass):Observable<IClass[]>{
+  updateClass(id:number,clazz:IClass):Observable<IClass[]>{
     return of(this.classes.map(c=> c.id===id?{...c,...clazz}:c));
   }
 
   getUltimo():number{
     return this.classes.length+1;
   }
-
-  constructor() { }
-
-
   
 }
   

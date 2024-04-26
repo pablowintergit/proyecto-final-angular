@@ -1,6 +1,5 @@
 import { ICourse } from "./courses.model";
 import { IStudent } from "./students.model";
-import { ITeacher } from "./teacher.model";
 
 export interface IClass{
     id:number;

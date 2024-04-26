@@ -1,1 +1,63 @@
-<p>classe-dialog works!</p>
+<h2 mat-dialog-title appFontSizeDirective fontSize="30px" >{{title}}</h2>
+<div mat-dialog-content>
+  <form [formGroup]="classForm">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Curso</mat-label>
+          <mat-select formControlName="course" [compareWith]="compareTeacher">
+            <mat-option *ngFor="let course of courses" [value]="course">
+                {{ course.name }}
+            </mat-option>
+          </mat-select>
+          <!-- <mat-error>{{
+            nameControl?.errors | formFieldValidationErrors
+          }}</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Horario</mat-label>
+          <input formControlName="shechedule" matInput />
+          <!-- <mat-error>{{
+            descriptionControl?.errors | formFieldValidationErrors
+          }}</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-12">
+        <mat-form-field class="w-100" appearance="fill">
+          <mat-label>Alumno</mat-label>
+          <mat-select formControlName="student" [compareWith]="compareStudent">
+            <mat-option *ngFor="let student of students" [value]="student">
+                {{ student | fullNamePipe }}
+            </mat-option>
+          </mat-select>
+          <!-- <mat-error>{{
+            teacherControl?.errors | formFieldValidationErrors
+          }}</mat-error> -->
+        </mat-form-field>
+      </div>
+
+      <div class="col-md-6">
+        <mat-form-field>
+          <mat-label>Fecha</mat-label>
+          <input formControlName="fecha" matInput [matDatepicker]="picker">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <!-- <mat-error>{{
+            birthDateControl?.errors | formFieldValidationErrors
+          }}</mat-error> -->
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="d-flex justify-content-end" mat-dialog-actions>
+  <button mat-dialog-close mat-button>Cancelar</button>
+  <button mat-button (click)="onSave()" >Guardar</button>
+</div>
+
