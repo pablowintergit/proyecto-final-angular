@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ICourse } from '../../../../model';
 import { CoursesService } from './courses.service';
+import { MatDialog } from '@angular/material/dialog';
+import { CourseDialogComponent } from './course-dialog.component';
 
 @Component({
   selector: 'app-courses',
@@ -18,7 +20,9 @@ export class CoursesComponent implements OnInit {
       'acciones',
     ];
 
-    constructor(private coursesService: CoursesService) {
+    constructor(private coursesService: CoursesService,
+      private matDialog:MatDialog
+    ) {
       
     }
 
@@ -39,7 +43,23 @@ export class CoursesComponent implements OnInit {
   }
 
   openDialog(course?: ICourse): void {
-    //TODO
+    this.matDialog.open(CourseDialogComponent, {
+      data: { course },
+    })
+    .afterClosed()
+    .subscribe({
+      next: (result)=>{
+        if (result){
+         /*  if (student){
+            this.students=this.students.map(s=> s.id===student.id?{...s,...result}:s);
+          }else{
+            const ultimo:number=this.getUltimo();
+            result.id=ultimo;
+            this.students=[...this.students,result];
+          } */
+        }
+      }
+    }
   }
 
   onDeleteCourse(id: number): void {
