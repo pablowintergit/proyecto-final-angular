@@ -48,6 +48,24 @@ export class CourseDialogComponent implements OnInit {
     return t1 && t2 ? t1.id===t2.id : t1===t2;
   }
 
+  /*
+  name:['',[Validators.required,Validators.minLength(3),onlyLettersValidator]],
+      description:['',[Validators.required,Validators.minLength(10)]],
+      teacher:['
+  */
+
+  get nameControl() {
+    return this.courseForm.get('name');
+  }
+
+  get descriptionControl() {
+    return this.courseForm.get('description');
+  }
+
+  get teacherControl() {
+    return this.courseForm.get('teacher');
+  }
+
   onSave(): void{
     if (this.courseForm.invalid){
       this.courseForm.markAllAsTouched();
