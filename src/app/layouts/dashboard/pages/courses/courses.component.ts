@@ -59,7 +59,7 @@ export class CoursesComponent implements OnInit {
           } */
         }
       }
-    }
+    });
   }
 
   onDeleteCourse(id: number): void {

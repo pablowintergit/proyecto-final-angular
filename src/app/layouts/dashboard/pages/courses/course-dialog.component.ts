@@ -47,4 +47,12 @@ export class CourseDialogComponent implements OnInit {
   compareTeacher(t1:ITeacher,t2:ITeacher): boolean{
     return t1 && t2 ? t1.id===t2.id : t1===t2;
   }
+
+  onSave(): void{
+    if (this.courseForm.invalid){
+      this.courseForm.markAllAsTouched();
+    }else{
+      this.matDialogRef.close(this.courseForm.value);
+    }
+  }
 }

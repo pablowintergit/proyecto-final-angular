@@ -6,66 +6,33 @@
         <mat-form-field class="w-100" appearance="fill">
           <mat-label>Nombre</mat-label>
           <input formControlName="name" matInput />
-          <mat-error>{{
+          <!-- <mat-error>{{
             nameControl?.errors | formFieldValidationErrors
-          }}</mat-error>
+          }}</mat-error> -->
         </mat-form-field>
       </div>
 
       <div class="col-md-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Apellido</mat-label>
-          <input formControlName="lastName" matInput />
-          <mat-error>{{
+          <mat-label>Descripcion</mat-label>
+          <input formControlName="description" matInput />
+          <!-- <mat-error>{{
             lastNameControl?.errors | formFieldValidationErrors
-          }}</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="col-md-6">
-        <mat-form-field>
-          <mat-label>Choose a date</mat-label>
-          <input formControlName="birthDate" matInput [matDatepicker]="picker">
-          <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-          <mat-error>{{
-            birthDateControl?.errors | formFieldValidationErrors
-          }}</mat-error>
+          }}</mat-error> -->
         </mat-form-field>
       </div>
 
       <div class="col-md-12">
         <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Email</mat-label>
-          <input formControlName="email" matInput />
-          <mat-error>{{
-            emailControl?.errors | formFieldValidationErrors
-          }}</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="col-md-12">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Direccion</mat-label>
-          <input formControlName="adreess" matInput />
-          <mat-error>{{
-            adreessControl?.errors | formFieldValidationErrors
-          }}</mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="col-md-12">
-        <mat-form-field class="w-100" appearance="fill">
-          <mat-label>Localidad</mat-label>
+          <mat-label>Profesor</mat-label>
           <mat-select formControlName="teacher" [compareWith]="compareTeacher">
             <mat-option *ngFor="let teacher of teachers" [value]="teacher">
                 {{ teacher | fullNamePipe }}
             </mat-option>
           </mat-select>
-          <mat-error>{{
+<!--           <mat-error>{{
             localidadControl?.errors | formFieldValidationErrors
-          }}</mat-error>
+          }}</mat-error> -->
         </mat-form-field>
       </div>
     </div>
