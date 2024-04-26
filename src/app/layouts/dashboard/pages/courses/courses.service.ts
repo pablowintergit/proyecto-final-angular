@@ -22,4 +22,22 @@ export class CoursesService {
     return of(this.courses);
   }
 
+  createCourse(course:ICourse):Observable<ICourse[]>{
+      course.id=this.getUltimo();
+      this.courses.push(course);
+      return of(this.courses);
+  }
+
+  deleteCourse(id:number):void{
+    
+  }
+
+  updateCourse(id:number,course:ICourse):Observable<ICourse[]>{
+    return of(this.courses.map(c=> c.id===id?{...c,...course}:c));
+  }
+
+  getUltimo():number{
+    return this.courses.length+1;
+  }
+
 }

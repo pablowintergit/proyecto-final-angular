@@ -50,13 +50,19 @@ export class CoursesComponent implements OnInit {
     .subscribe({
       next: (result)=>{
         if (result){
-         /*  if (student){
-            this.students=this.students.map(s=> s.id===student.id?{...s,...result}:s);
+          if (course){
+            this.coursesService.updateCourse(course.id,result).subscribe({
+              next: (courses) => {
+                this.courses=[...courses];
+              },
+            })
           }else{
-            const ultimo:number=this.getUltimo();
-            result.id=ultimo;
-            this.students=[...this.students,result];
-          } */
+            this.coursesService.createCourse(result).subscribe({
+              next: (courses) => {
+                this.courses=[...courses];
+              },
+            })
+          }
         }
       }
     });
