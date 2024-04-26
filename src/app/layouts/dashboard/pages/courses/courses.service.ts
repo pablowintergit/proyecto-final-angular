@@ -28,8 +28,8 @@ export class CoursesService {
       return of(this.courses);
   }
 
-  deleteCourse(id:number):void{
-    
+  deleteCourse(id:number):Observable<ICourse[]>{
+    return of(this.courses.filter(c=> c.id!==id));
   }
 
   updateCourse(id:number,course:ICourse):Observable<ICourse[]>{

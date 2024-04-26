@@ -69,7 +69,12 @@ export class CoursesComponent implements OnInit {
   }
 
   onDeleteCourse(id: number): void {
-    
+    if (confirm('Esta seguro?')) {
+      this.coursesService.deleteCourse(id).subscribe({
+        next: (courses) => {
+          this.courses=[...courses];
+        },
+      })
+    }
   }
-
 }
