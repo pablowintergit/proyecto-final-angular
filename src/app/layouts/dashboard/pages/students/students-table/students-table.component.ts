@@ -1,24 +1,20 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IStudent } from '../../../../../model';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentDialogComponent } from '../student-dialog/student-dialog.component';
 import { Localidad, ILocalidad } from '../../../../../model/localidades.model';
+import { LocalidadService } from '../../../../../core/localidad.service';
 
 @Component({
   selector: 'app-students-table',
   templateUrl: './students-table.component.html',
   styleUrl: './students-table.component.scss'
 })
-export class StudentsTableComponent {
+export class StudentsTableComponent implements OnInit {
   
-  public localidades:Localidad[]=[
-    new Localidad("cordoba","Cordoba"),
-    new Localidad("alta-gracia","Alta Gracia"),
-    new Localidad("buenos-aires","Buenos Aires"),
-    new Localidad("santa-fe","Santa Fe"),
-    new Localidad("jesus-maria","Jesus Maria"),
-    new Localidad("carlos-paz","Carlos Paz")
-  ];
+  localidades:ILocalidad[]=[];
+
+
   students:IStudent[]=[
     {id:1,name:"Juan",lastName:"Rodriguez",birthDate:new Date(1990,5,20),adreess:"Laprida 150",email:"juanrodriguez@gmail.com",
       localidad: new Localidad("cordoba","Cordoba")},
@@ -48,7 +44,19 @@ displayedColumns: string[] = [
 'acciones'
 ];
 
-  constructor(private matDialog:MatDialog){}
+  constructor(
+    private localidadService:LocalidadService,
+    private matDialog:MatDialog){}
+  
+  ngOnInit(): void {
+    this.getLocalidades();
+  }
+
+  getLocalidades():void{
+    this.localidadService.getLocalidades().subscribe({
+      next:(localidades)=>this.localidades=localidades
+    });
+  }
 
   openDialog(student?:IStudent):void{
     this.matDialog
