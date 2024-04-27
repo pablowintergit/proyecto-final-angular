@@ -3,28 +3,30 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IClass, ICourse, IStudent } from '../../../../model';
 import { CoursesService } from '../courses/courses.service';
+import { StudentsService } from '../students/students-table/students.service';
 
 @Component({
-  selector: 'app-classe-dialog',
-  templateUrl: './classe-dialog.component.html',
-  styleUrl: './classe-dialog.component.scss'
+  selector: 'app-class-dialog',
+  templateUrl: './class-dialog.component.html',
+  styleUrl: './class-dialog.component.scss'
 })
-export class ClasseDialogComponent {
+export class ClassDialogComponent {
   clazzForm:FormGroup;
   students:IStudent[]=[];
-  course:ICourse[]=[];
+  courses:ICourse[]=[];
   title:string;
   clazz?:IClass;
   
-  //TODO:FALTA INJECTAR EL SERVICIO DE CURSOS Y ALUMNOS
+
   constructor(@Inject(MAT_DIALOG_DATA) private data:any,
               private formBuilder:FormBuilder,
               private coursesService:CoursesService,
+              private studentService:StudentsService,
               private matDialogRef:MatDialogRef<ClasseDialogComponent>
   ) { 
     this.clazzForm=this.formBuilder.group({
       course:['',[Validators.required]],
-      shedule:['',[Validators.required,Validators.minLength(10)]],
+      schedule:['',[Validators.required,Validators.minLength(10)]],
       student:['',[Validators.required]],
       fecha:['',[Validators.required]]
     })
@@ -38,7 +40,9 @@ export class ClasseDialogComponent {
   }
 
   ngOnInit(): void {
-    
+    this.getCourses();
+    this.getStudents();
+
     if (this.clazz){
       this.clazzForm.patchValue(this.clazz);
     }
@@ -46,22 +50,30 @@ export class ClasseDialogComponent {
 
   getCourses(): void{
     this.coursesService.getCourses().subscribe(courses => {
-      this.course = courses;
+      this.courses = courses;
     })
   }
 
-
+  getStudents(): void{
+    this.studentService.getStudents().subscribe(students => {
+      this.students = students;
+    })
+  }
 
   compareStudent(s1:IStudent,s2:IStudent): boolean{
     return s1 && s2 ? s1.id===s2.id : s1===s2;
+  }
+
+  compareCourse(c1:ICourse,c2:ICourse): boolean{
+    return c1 && c2 ? c1.id===c2.id : c1===c2;
   }
 
   get courseControl() {
     return this.clazzForm.get('course');
   }
 
-  get sheduleControl() {
-    return this.clazzForm.get('shedule');
+  get scheduleControl() {
+    return this.clazzForm.get('schedule');
   }
 
   get studentControl() {
