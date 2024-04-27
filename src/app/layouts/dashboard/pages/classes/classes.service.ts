@@ -47,7 +47,9 @@ export class ClassesService {
   }
 
   getUltimo():number{
-    return this.classes.length+1;
+    let ids:number[]=this.classes.map(s=>s.id);
+    let id:number=Math.max(...ids) + 1;
+    return id;
   }
   
 }

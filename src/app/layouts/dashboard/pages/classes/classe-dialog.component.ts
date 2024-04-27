@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { IClass, ICourse, IStudent } from '../../../../model';
+import { CoursesService } from '../courses/courses.service';
 
 @Component({
   selector: 'app-classe-dialog',
@@ -14,9 +15,11 @@ export class ClasseDialogComponent {
   course:ICourse[]=[];
   title:string;
   clazz?:IClass;
-
+  
+  //TODO:FALTA INJECTAR EL SERVICIO DE CURSOS Y ALUMNOS
   constructor(@Inject(MAT_DIALOG_DATA) private data:any,
               private formBuilder:FormBuilder,
+              private coursesService:CoursesService,
               private matDialogRef:MatDialogRef<ClasseDialogComponent>
   ) { 
     this.clazzForm=this.formBuilder.group({
@@ -40,6 +43,14 @@ export class ClasseDialogComponent {
       this.clazzForm.patchValue(this.clazz);
     }
   }
+
+  getCourses(): void{
+    this.coursesService.getCourses().subscribe(courses => {
+      this.course = courses;
+    })
+  }
+
+
 
   compareStudent(s1:IStudent,s2:IStudent): boolean{
     return s1 && s2 ? s1.id===s2.id : s1===s2;

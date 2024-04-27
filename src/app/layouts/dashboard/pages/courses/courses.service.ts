@@ -37,7 +37,9 @@ export class CoursesService {
   }
 
   getUltimo():number{
-    return this.courses.length+1;
+    let ids:number[]=this.courses.map(s=>s.id);
+    let id:number=Math.max(...ids) + 1;
+    return id;
   }
 
 }
