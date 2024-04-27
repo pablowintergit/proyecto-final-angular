@@ -3,6 +3,7 @@ import { IClass } from '../../../../model';
 import { ClassesService } from './classes.service';
 import { MatDialog } from '@angular/material/dialog';
 import { Observable, of } from 'rxjs';
+import { ClassDialogComponent } from './class-dialog.component';
 
 @Component({
   selector: 'app-classes',
@@ -35,14 +36,14 @@ export class ClassesComponent implements OnInit {
   displayedColumns: string[] = [
     'id',
     'course',
-    'shedule',
+    'schedule',
     'student',
     'fecha',
     'acciones',
   ];
 
   openDialog(clazz?:IClass):void{
-    this.matDialog.open(ClassesComponent, {
+    this.matDialog.open(ClassDialogComponent, {
       data: { clazz},
     })
     .afterClosed()

@@ -22,7 +22,7 @@ export class ClassDialogComponent {
               private formBuilder:FormBuilder,
               private coursesService:CoursesService,
               private studentService:StudentsService,
-              private matDialogRef:MatDialogRef<ClasseDialogComponent>
+              private matDialogRef:MatDialogRef<ClassDialogComponent>
   ) { 
     this.clazzForm=this.formBuilder.group({
       course:['',[Validators.required]],

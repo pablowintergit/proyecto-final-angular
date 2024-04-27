@@ -1,22 +1,26 @@
-import { AfterViewInit, Component, Inject, Input } from '@angular/core';
+import { AfterViewInit, Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { onlyLettersValidator } from '../../../../../validators/onlyLettersValidator.validator';
 import { dateValidator } from '../../../../../validators/dateValidator.validator';
 import { MatDialogRef } from '@angular/material/dialog';
-import { Localidad } from '../../../../../model';
+import { IStudent, Localidad } from '../../../../../model';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { LocalidadService } from '../../../../../core/localidad.service';
 
 @Component({
   selector: 'app-student-dialog',
   templateUrl: './student-dialog.component.html',
   styleUrl: './student-dialog.component.scss'
 })
-export class StudentDialogComponent{
+export class StudentDialogComponent implements OnInit{
     studentForm:FormGroup;
-    localidades:Localidad[];
+    localidades:Localidad[]=[];
     title:string;
+    student?:IStudent;
 
-    constructor(@Inject(MAT_DIALOG_DATA) private data: any,private formBuilder:FormBuilder, private matDialogRef:MatDialogRef<StudentDialogComponent>){
+    constructor(@Inject(MAT_DIALOG_DATA) private data: any,private formBuilder:FormBuilder, 
+                        private matDialogRef:MatDialogRef<StudentDialogComponent>,
+                        private localidadService:LocalidadService){
       this.studentForm=this.formBuilder.group({
           name:['',[Validators.required,Validators.minLength(3),onlyLettersValidator]],
           lastName:['',[Validators.required,Validators.minLength(3),onlyLettersValidator]],
@@ -27,18 +31,27 @@ export class StudentDialogComponent{
           localidad:['',[Validators.required]]
         }
       );
-      this.localidades=data.localidades;
-      if (data.editingStudent){
+      if (data.student){
         this.title="Editar Alumno";
-        this.studentForm.patchValue(data.editingStudent);
-       /*  if (this.studentForm.get('localidad')!=null){
-          this.studentForm.get('localidad')?.patchValue(data.editingStudent.localidad.codigo);
-        } */
+        this.student=data.student;
       }else{
         this.title="Crear Alumno";
       }
     }
     
+    ngOnInit(): void {
+      this.getLocalidades();
+      if (this.student){
+        this.studentForm.patchValue(this.student);
+      }
+    }
+
+    getLocalidades():void{
+      this.localidadService.getLocalidades().subscribe({
+        next:(localidades)=>this.localidades=localidades
+      })
+    }
+
     compareLocalidad(l1:Localidad,l2:Localidad):boolean{
       return l1 && l2 ? l1.codigo===l2.codigo : l1===l2;
     }
